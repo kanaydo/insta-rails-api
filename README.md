@@ -1,24 +1,16 @@
-# README
+## Instageram REST API
+This project is using Rails 5.2, Ruby 2.5.1 and PostgreSQL as database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usage
+Make sure you have installed Ruby 2.5.1
+```
+https://github.com/kanaydo/insta-geram-api.git
+cd insta-geram-api
+bundle install
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Rename file /config/database_template.yml to /config/database.yml
+```
+rake db:create
+rake db:migrate
+```
