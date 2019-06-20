@@ -6,8 +6,10 @@
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
 AddAttachmentAvatarToUsers	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^class AddAttachmentAvatarToUsers < ActiveRecord::Migration[5.2]$/;"	c
+Api	app/controllers/api/v1/comments_controller.rb	/^class Api::V1::CommentsController < ApplicationController$/;"	c
 Api	app/controllers/api/v1/posts_controller.rb	/^class Api::V1::PostsController < ApplicationController$/;"	c
 Api	app/controllers/api/v1/users_controller.rb	/^class Api::V1::UsersController < ApplicationController$/;"	c
+Api	test/controllers/api/v1/comments_controller_test.rb	/^class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Api	test/controllers/api/v1/posts_controller_test.rb	/^class Api::V1::PostsControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Api	test/controllers/api/v1/users_controller_test.rb	/^class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:InstaGeramApi
@@ -18,7 +20,10 @@ ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::B
 ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
 ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
 Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
+Comment	app/models/comment.rb	/^class Comment < ApplicationRecord$/;"	c
+CommentTest	test/models/comment_test.rb	/^class CommentTest < ActiveSupport::TestCase$/;"	c
 Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
+CreateComments	db/migrate/20190620043707_create_comments.rb	/^class CreateComments < ActiveRecord::Migration[5.2]$/;"	c
 CreatePosts	db/migrate/20190618070138_create_posts.rb	/^class CreatePosts < ActiveRecord::Migration[5.2]$/;"	c
 CreateRelationships	db/migrate/20190618080144_create_relationships.rb	/^class CreateRelationships < ActiveRecord::Migration[5.2]$/;"	c
 CreateUsers	db/migrate/20190618063134_create_users.rb	/^class CreateUsers < ActiveRecord::Migration[5.2]$/;"	c
@@ -32,16 +37,26 @@ UserTest	test/models/user_test.rb	/^class UserTest < ActiveSupport::TestCase$/;"
 change	db/migrate/20190618063134_create_users.rb	/^  def change$/;"	f	class:CreateUsers
 change	db/migrate/20190618070138_create_posts.rb	/^  def change$/;"	f	class:CreatePosts
 change	db/migrate/20190618080144_create_relationships.rb	/^  def change$/;"	f	class:CreateRelationships
+change	db/migrate/20190620043707_create_comments.rb	/^  def change$/;"	f	class:CreateComments
+comment	app/controllers/api/v1/posts_controller.rb	/^  def comment$/;"	f	class:Api
+comment_params	app/controllers/api/v1/posts_controller.rb	/^  def comment_params$/;"	f	class:Api
 create	app/controllers/api/v1/posts_controller.rb	/^  def create$/;"	f	class:Api
 create	app/controllers/api/v1/users_controller.rb	/^  def create$/;"	f	class:Api
 destroy	app/controllers/api/v1/posts_controller.rb	/^  def destroy$/;"	f	class:Api
 down	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^  def self.down$/;"	F	class:AddAttachmentAvatarToUsers
+feed	app/controllers/api/v1/posts_controller.rb	/^  def feed$/;"	f	class:Api
+feed	app/models/user.rb	/^  def feed$/;"	f
 follow	app/controllers/api/v1/users_controller.rb	/^  def follow$/;"	f	class:Api
 followers	app/controllers/api/v1/users_controller.rb	/^  def followers$/;"	f	class:Api
 following	app/controllers/api/v1/users_controller.rb	/^  def following$/;"	f	class:Api
+full_detail	app/models/user.rb	/^  def full_detail$/;"	f
 index	app/controllers/api/v1/posts_controller.rb	/^  def index$/;"	f	class:Api
+post_detail	app/models/post.rb	/^  def post_detail$/;"	f	class:Post
 post_params	app/controllers/api/v1/posts_controller.rb	/^  def post_params$/;"	f	class:Api
+posts	app/controllers/api/v1/users_controller.rb	/^  def posts$/;"	f	class:Api
+profile	app/models/user.rb	/^  def profile$/;"	f
 render_json	app/controllers/application_controller.rb	/^  def render_json response, code$/;"	f	class:ApplicationController
+show	app/controllers/api/v1/posts_controller.rb	/^  def show$/;"	f	class:Api
 show	app/controllers/api/v1/users_controller.rb	/^  def show$/;"	f	class:Api
 system!	bin/setup	/^def system!(*args)$/;"	f
 system!	bin/update	/^def system!(*args)$/;"	f

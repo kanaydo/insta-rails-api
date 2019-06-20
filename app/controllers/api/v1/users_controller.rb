@@ -23,16 +23,7 @@ class Api::V1::UsersController < ApplicationController
   def show
     user = User.find params[:id]
     if user
-      new_user = user.attributes.merge(
-        avatar: user.avatar.url, 
-        posts: user.user_posts,
-        followers: user.followers.count,
-        following: user.following.count
-      )
-      response = {
-        message: "Successfully fetch user information!",
-        user: new_user,
-      }
+      response = user.full_detail
       status = :ok
     else
       response = {
@@ -47,14 +38,12 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find params[:id]
     if user.update user_params
-      user = user.attributes.merge(avatar: user.avatar.url)
       response = {
         message: "Successfully updated user information!",
         user: user
       }
       status = :ok
     else
-      user = user.attributes.merge(avatar: user.avatar.url)
       response = {
         message: "Failed to update user information!, due to #{ user.errors.full_messages }",
         user: user
@@ -66,20 +55,18 @@ class Api::V1::UsersController < ApplicationController
 
   def followers
     user = User.find params[:id]
-    followers = user.followers
     response = {
       message: "Successfully fetch #{ user.username } followers",
-      followers: followers
+      followers: user.followers
     }
     render json: response, status: :ok
   end
 
   def following
     user = User.find params[:id]
-    following = user.following
     response = {
       message: "Successfully fetch #{ user.username } following",
-      followers: following
+      followers: user.following
     }
     render json: response, status: :ok
   end
@@ -104,6 +91,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def unfollow
+  end
+  
+  def posts
+    user = User.find params[:id]
+    response = {
+      message: "Successfully fecth user posts",
+      posts: user.user_posts
+    }
+    render json: response, status: :ok
   end
 
   private
