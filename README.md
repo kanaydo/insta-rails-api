@@ -1,5 +1,10 @@
 ## Instageram REST API
+flutter-gram restful api
+
+https://github.com/kanaydo/flutter-insta
+
 This project is using Rails 5.2, Ruby 2.5.1 and PostgreSQL as database
+
 
 ## Usage
 Make sure you have installed Ruby 2.5.1
