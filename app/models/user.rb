@@ -61,4 +61,47 @@ class User < ApplicationRecord
     post_list
   end
 
+  def operation_success
+    response = {
+      message: "Successfully updated user information!",
+      user: self.attributes.merge(avatar: self.avatar.url)
+    }
+  end
+
+  def operation_failed
+    response = {
+      message: "Failed to update user information!, due to #{ self.errors.full_messages }",
+      user: self
+    }
+  end
+
+  def self.user_not_found
+    response = {
+      message: "Failed to fetch user information!",
+      user: nil
+    }
+  end
+
+  def followers_info
+    response = {
+      message: "Successfully fetch #{ self.username } followers",
+      followers: self.followers
+    }
+  end
+
+  def following_info
+    response = {
+      message: "Successfully fetch #{ self.username } following",
+      followers: self.following
+    }
+  end
+
+  def all_posts
+    response = {
+      message: "Successfully fecth user posts",
+      posts: self.user_posts
+    }
+  end
+
+
 end

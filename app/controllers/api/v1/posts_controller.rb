@@ -3,6 +3,10 @@ class Api::V1::PostsController < ApplicationController
   def index
   end
 
+  def explore
+    render json: Post.explore, status: :ok
+  end
+
   def feed
     user = User.find params[:id]
     response = {

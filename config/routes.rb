@@ -12,12 +12,14 @@ Rails.application.routes.draw do
       resources :posts do
         collection do
           get :feed
+          get :explore
         end
         member do
           post :comment
         end
       end
       resources :comments, only: [:create, :destroy]
+      resources :sessions, only: [:create, :destroy]
     end
   end
 

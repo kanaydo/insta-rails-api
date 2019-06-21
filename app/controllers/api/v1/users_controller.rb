@@ -3,18 +3,10 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new user_params
     if user.save
-      user = user.attributes.merge(avatar: user.avatar.url)
-      response = {
-        message: "Successfully created user!",
-        user: user
-      }
+      response = user.operation_success
       status = :ok
     else
-      user = user.attributes.merge(avatar: user.avatar.url)
-      response = {
-        message: "Failed to create user due to #{ user.errors.full_messages }",
-        user: user
-      }
+      response = user.operation_failed
       status = :unprocessable_entity 
     end
     render json: response, status: status
@@ -26,10 +18,7 @@ class Api::V1::UsersController < ApplicationController
       response = user.full_detail
       status = :ok
     else
-      response = {
-        message: "Failed to fetch user information!",
-        user: nil
-      }
+      response = User.user_not_found
       status = :not_found 
     end
     render json: response, status: status
@@ -38,16 +27,10 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find params[:id]
     if user.update user_params
-      response = {
-        message: "Successfully updated user information!",
-        user: user
-      }
+      response = user.operation_success
       status = :ok
     else
-      response = {
-        message: "Failed to update user information!, due to #{ user.errors.full_messages }",
-        user: user
-      }
+      response = user.operation_failed
       status = :ok
     end
     render json: response, status: status 
@@ -55,19 +38,13 @@ class Api::V1::UsersController < ApplicationController
 
   def followers
     user = User.find params[:id]
-    response = {
-      message: "Successfully fetch #{ user.username } followers",
-      followers: user.followers
-    }
+    response = user.followers_info
     render json: response, status: :ok
   end
 
   def following
     user = User.find params[:id]
-    response = {
-      message: "Successfully fetch #{ user.username } following",
-      followers: user.following
-    }
+    response = user.following_info
     render json: response, status: :ok
   end
 
@@ -76,16 +53,10 @@ class Api::V1::UsersController < ApplicationController
     follow = user.passive_relationships.new(follower_id: params[:follower_id])
     if follow.save
       status = :ok
-      response = {
-        message: "Successfully following #{ user.username }",
-        user: user
-      }
+      response = follow.success_follow
     else
       status = :unprocessable_entity 
-      response = {
-        message: "Successfully following #{ user.username }",
-        user: user
-      }
+      response = follow.failed_follow
     end
     render json: response, status: status
   end
@@ -95,11 +66,7 @@ class Api::V1::UsersController < ApplicationController
   
   def posts
     user = User.find params[:id]
-    response = {
-      message: "Successfully fecth user posts",
-      posts: user.user_posts
-    }
-    render json: response, status: :ok
+    render json: user.all_posts, status: :ok
   end
 
   private

@@ -8,9 +8,11 @@ ActiveSupport	test/test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
 AddAttachmentAvatarToUsers	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^class AddAttachmentAvatarToUsers < ActiveRecord::Migration[5.2]$/;"	c
 Api	app/controllers/api/v1/comments_controller.rb	/^class Api::V1::CommentsController < ApplicationController$/;"	c
 Api	app/controllers/api/v1/posts_controller.rb	/^class Api::V1::PostsController < ApplicationController$/;"	c
+Api	app/controllers/api/v1/sessions_controller.rb	/^class Api::V1::SessionsController < ApplicationController$/;"	c
 Api	app/controllers/api/v1/users_controller.rb	/^class Api::V1::UsersController < ApplicationController$/;"	c
 Api	test/controllers/api/v1/comments_controller_test.rb	/^class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Api	test/controllers/api/v1/posts_controller_test.rb	/^class Api::V1::PostsControllerTest < ActionDispatch::IntegrationTest$/;"	c
+Api	test/controllers/api/v1/sessions_controller_test.rb	/^class Api::V1::SessionsControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Api	test/controllers/api/v1/users_controller_test.rb	/^class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest$/;"	c
 Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:InstaGeramApi
 ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
@@ -34,6 +36,7 @@ Relationship	app/models/relationship.rb	/^class Relationship < ApplicationRecord
 RelationshipTest	test/models/relationship_test.rb	/^class RelationshipTest < ActiveSupport::TestCase$/;"	c
 User	app/models/user.rb	/^class User < ApplicationRecord$/;"	c
 UserTest	test/models/user_test.rb	/^class UserTest < ActiveSupport::TestCase$/;"	c
+all_posts	app/models/user.rb	/^  def all_posts$/;"	f
 change	db/migrate/20190618063134_create_users.rb	/^  def change$/;"	f	class:CreateUsers
 change	db/migrate/20190618070138_create_posts.rb	/^  def change$/;"	f	class:CreatePosts
 change	db/migrate/20190618080144_create_relationships.rb	/^  def change$/;"	f	class:CreateRelationships
@@ -41,16 +44,24 @@ change	db/migrate/20190620043707_create_comments.rb	/^  def change$/;"	f	class:C
 comment	app/controllers/api/v1/posts_controller.rb	/^  def comment$/;"	f	class:Api
 comment_params	app/controllers/api/v1/posts_controller.rb	/^  def comment_params$/;"	f	class:Api
 create	app/controllers/api/v1/posts_controller.rb	/^  def create$/;"	f	class:Api
+create	app/controllers/api/v1/sessions_controller.rb	/^  def create$/;"	f	class:Api
 create	app/controllers/api/v1/users_controller.rb	/^  def create$/;"	f	class:Api
 destroy	app/controllers/api/v1/posts_controller.rb	/^  def destroy$/;"	f	class:Api
 down	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^  def self.down$/;"	F	class:AddAttachmentAvatarToUsers
+explore	app/controllers/api/v1/posts_controller.rb	/^  def explore$/;"	f	class:Api
+explore	app/models/post.rb	/^  def self.explore$/;"	F	class:Post
+failed_follow	app/models/relationship.rb	/^  def failed_follow$/;"	f	class:Relationship
 feed	app/controllers/api/v1/posts_controller.rb	/^  def feed$/;"	f	class:Api
 feed	app/models/user.rb	/^  def feed$/;"	f
 follow	app/controllers/api/v1/users_controller.rb	/^  def follow$/;"	f	class:Api
 followers	app/controllers/api/v1/users_controller.rb	/^  def followers$/;"	f	class:Api
+followers_info	app/models/user.rb	/^  def followers_info$/;"	f
 following	app/controllers/api/v1/users_controller.rb	/^  def following$/;"	f	class:Api
+following_info	app/models/user.rb	/^  def following_info$/;"	f
 full_detail	app/models/user.rb	/^  def full_detail$/;"	f
 index	app/controllers/api/v1/posts_controller.rb	/^  def index$/;"	f	class:Api
+operation_failed	app/models/user.rb	/^  def operation_failed$/;"	f
+operation_success	app/models/user.rb	/^  def operation_success$/;"	f
 post_detail	app/models/post.rb	/^  def post_detail$/;"	f	class:Post
 post_params	app/controllers/api/v1/posts_controller.rb	/^  def post_params$/;"	f	class:Api
 posts	app/controllers/api/v1/users_controller.rb	/^  def posts$/;"	f	class:Api
@@ -58,10 +69,12 @@ profile	app/models/user.rb	/^  def profile$/;"	f
 render_json	app/controllers/application_controller.rb	/^  def render_json response, code$/;"	f	class:ApplicationController
 show	app/controllers/api/v1/posts_controller.rb	/^  def show$/;"	f	class:Api
 show	app/controllers/api/v1/users_controller.rb	/^  def show$/;"	f	class:Api
+success_follow	app/models/relationship.rb	/^  def success_follow$/;"	f	class:Relationship
 system!	bin/setup	/^def system!(*args)$/;"	f
 system!	bin/update	/^def system!(*args)$/;"	f
 unfollow	app/controllers/api/v1/users_controller.rb	/^  def unfollow$/;"	f	class:Api
 up	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^  def self.up$/;"	F	class:AddAttachmentAvatarToUsers
 update	app/controllers/api/v1/users_controller.rb	/^  def update$/;"	f	class:Api
+user_not_found	app/models/user.rb	/^  def self.user_not_found$/;"	F
 user_params	app/controllers/api/v1/users_controller.rb	/^  def user_params$/;"	f	class:Api
 user_posts	app/models/user.rb	/^  def user_posts$/;"	f	class:User

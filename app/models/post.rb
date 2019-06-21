@@ -27,4 +27,16 @@ class Post < ApplicationRecord
     }
   end
 
+  def self.explore
+    posts = []
+    self.order('RANDOM()').each do |post|
+      post = post.attributes.merge(image: post.image.url)
+      posts << post
+    end
+    response = {
+      message: "Successfully fetch explore posts",
+      posts: posts 
+    }
+  end
+
 end

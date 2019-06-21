@@ -8,4 +8,18 @@ class Relationship < ApplicationRecord
   validates :follower_id, presence: true
   validates :followed_id, presence: true
 
+  def success_follow
+    response = {
+      message: "Successfully following #{ self.followed.username }",
+      user: self
+    }
+  end
+
+  def failed_follow
+    response = {
+      message: "Failed to follow  #{ self.followed.username }",
+      user: self
+    }
+  end
+
 end
