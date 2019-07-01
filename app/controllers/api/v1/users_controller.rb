@@ -3,10 +3,10 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new user_params
     if user.save
-      response = user.operation_success
+      response = user.save_seccess
       status = :ok
     else
-      response = user.operation_failed
+      response = user.save_failed
       status = :unprocessable_entity 
     end
     render json: response, status: status
@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
       response = user.full_detail
       status = :ok
     else
-      response = User.user_not_found
+      response = User.not_found
       status = :not_found 
     end
     render json: response, status: status
@@ -27,10 +27,10 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find params[:id]
     if user.update user_params
-      response = user.operation_success
+      response = user.update_success
       status = :ok
     else
-      response = user.operation_failed
+      response = user.update_failed
       status = :ok
     end
     render json: response, status: status 
@@ -62,6 +62,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def unfollow
+  end
+
+  def check_relation
+    user = User.find params[:id]
+    friend_id = params[:user_id]
+    response = user.check_relation_with friend_id
+    render json: response, status: :ok
   end
   
   def posts

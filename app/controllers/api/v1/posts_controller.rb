@@ -1,35 +1,22 @@
 class Api::V1::PostsController < ApplicationController
 
-  def index
-  end
-
   def explore
     render json: Post.explore, status: :ok
   end
 
   def feed
     user = User.find params[:id]
-    response = {
-      message: "Successfully fetch all post",
-      posts: user.feed
-    }
+    response = user.post_feeds
     render json: response, status: :ok
   end
 
   def create
     post = Post.new post_params
     if post.save
-      post = post.attributes.merge(image: post.image.url(:medium))
-      response = {
-        message: "Successfully created post",
-        post: post
-      }
+      response = post.save_success
       status = :ok
     else
-      response = {
-        message: "Failed to creat post, due to #{ post.errors.full_messages }",
-        post: post
-      }
+      response = post.failed_seccess
       status = :unprocessable_entity
     end
     render json: response, status: status
@@ -43,17 +30,11 @@ class Api::V1::PostsController < ApplicationController
   def destroy
     post = Post.find params[:id]
     if post.destroy
+      response = post.success_delete
       status = :ok
-      response = {
-        message: "Successfully delete post",
-        post: post
-      }
     else
+      response = post.failed_delete
       status = :not_modified
-      response = {
-        message: "Successfully delete post",
-        post: post
-      }
     end
     render json: response, status: status
   end
@@ -63,16 +44,10 @@ class Api::V1::PostsController < ApplicationController
     comment = post.comments.new comment_params
     if comment.save
       status = :ok
-      response = {
-        message: "Successfully comment this post",
-        comment: comment
-      }
+      response = comment.success_save
     else
       status = :unprocessable_entity
-      response = {
-        message: "Failed to create comment, due to #{ comment.errors.full_messages }",
-        comment: comment
-      }
+      response = comment.failed_save
     end
     render json: response, status: status
   end

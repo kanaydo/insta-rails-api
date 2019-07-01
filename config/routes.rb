@@ -7,6 +7,7 @@ Rails.application.routes.draw do
           get :following, :followers
           post :follow
           get :posts
+          get :check_relation
         end
       end
       resources :posts do

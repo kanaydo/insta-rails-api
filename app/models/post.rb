@@ -27,6 +27,37 @@ class Post < ApplicationRecord
     }
   end
 
+  # create new post
+  def save_success
+    response = {
+      message: "Successfully created post",
+      post: self.attributes.merge(image: self.image.url(:medium))
+    }
+  end
+
+  # failed to create new post
+  def failed_seccess
+    response = {
+      message: "Failed to creat post, due to #{ self.errors.full_messages }",
+      post: self
+    }
+  end
+
+  # success delete post
+  def success_delete
+    response = {
+      message: "Successfully delete post",
+      post: self
+    }
+  end
+
+  def failed_delete
+    response = {
+      message: "Failed to delete post, due to #{self.errors.full_messages}",
+      post: self
+    }
+  end
+
   def self.explore
     posts = []
     self.order('RANDOM()').each do |post|

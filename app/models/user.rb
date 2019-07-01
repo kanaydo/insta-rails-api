@@ -40,7 +40,7 @@ class User < ApplicationRecord
     self.attributes.merge(avatar: self.avatar.url)
   end
 
-  def feed
+  def post_feeds
     posts = []
     users = (self.followers + self.following).uniq
     users << self
@@ -58,41 +58,94 @@ class User < ApplicationRecord
       )
       post_list << post
     end
-    post_list
+    response = {
+      message: "Successfully fecth user feeds",
+      posts: post_list
+    } 
   end
 
-  def operation_success
+  # success saved user response
+  def save_seccess
     response = {
-      message: "Successfully updated user information!",
+      status: 200,
+      message: "Successfully create user!",
       user: self.attributes.merge(avatar: self.avatar.url)
     }
   end
 
-  def operation_failed
+  # failed saving user response
+  def save_failed
     response = {
-      message: "Failed to update user information!, due to #{ self.errors.full_messages }",
+      status: 422,
+      message: "Failed to create user!, due to #{ self.errors.full_messages }",
       user: self
     }
   end
 
-  def self.user_not_found
+  # success update user response
+  def update_seccess
+    response = {
+      status: 200,
+      message: "Successfully update user information!",
+      user: self.attributes.merge(avatar: self.avatar.url)
+    }
+  end
+
+  # failed updating user response
+  def update_failed
+    response = {
+      status: 422,
+      message: "Failed updating user information!, due to #{ self.errors.full_messages }",
+      user: self
+    }
+  end
+
+  def self.not_found
     response = {
       message: "Failed to fetch user information!",
       user: nil
     }
   end
 
-  def followers_info
+  # success login response
+  def session_seccess
     response = {
-      message: "Successfully fetch #{ self.username } followers",
-      followers: self.followers
+      status: 200,
+      message: "Successfully Login as #{self.username}",
+      user: self.attributes.merge(avatar: self.avatar.url)
     }
   end
 
+  # login failed response
+  def self.session_failed
+    response = {
+      status: 422,
+      message: "Failed to login because username or password wrong",
+      user: self.new.attributes.merge(avatar: nil)
+    }
+  end
+
+  # fecth user follower information
+  def followers_info
+    followers = []
+    self.followers.each do |follower|
+      followers << follower.attributes.merge(avatar: follower.avatar.url)
+    end
+    response = {
+      message: "Successfully fetch #{ self.username } followers",
+      relations: followers
+    }
+  end
+
+  # fecth user following information
   def following_info
+    following = []
+    self.following.each do |follower|
+      following << follower.attributes.merge(avatar: follower.avatar.url)
+    end
     response = {
       message: "Successfully fetch #{ self.username } following",
-      followers: self.following
+      relations: following
     }
   end
 
@@ -103,5 +156,13 @@ class User < ApplicationRecord
     }
   end
 
+  # check relation with another user
+  def check_relation_with friend_id
+    response = {
+      message: "Successfully fecth user relation",
+      following: self.active_relationships.where(follower_id: friend_id).present?,
+      follower: self.passive_relationships.where(follower_id: friend_id).present?
+    }
+  end
 
 end

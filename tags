@@ -41,6 +41,8 @@ change	db/migrate/20190618063134_create_users.rb	/^  def change$/;"	f	class:Crea
 change	db/migrate/20190618070138_create_posts.rb	/^  def change$/;"	f	class:CreatePosts
 change	db/migrate/20190618080144_create_relationships.rb	/^  def change$/;"	f	class:CreateRelationships
 change	db/migrate/20190620043707_create_comments.rb	/^  def change$/;"	f	class:CreateComments
+check_relation	app/controllers/api/v1/users_controller.rb	/^  def check_relation$/;"	f	class:Api
+check_relation_with	app/models/user.rb	/^  def check_relation_with friend_id$/;"	f
 comment	app/controllers/api/v1/posts_controller.rb	/^  def comment$/;"	f	class:Api
 comment_params	app/controllers/api/v1/posts_controller.rb	/^  def comment_params$/;"	f	class:Api
 create	app/controllers/api/v1/posts_controller.rb	/^  def create$/;"	f	class:Api
@@ -50,31 +52,40 @@ destroy	app/controllers/api/v1/posts_controller.rb	/^  def destroy$/;"	f	class:A
 down	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^  def self.down$/;"	F	class:AddAttachmentAvatarToUsers
 explore	app/controllers/api/v1/posts_controller.rb	/^  def explore$/;"	f	class:Api
 explore	app/models/post.rb	/^  def self.explore$/;"	F	class:Post
+failed_delete	app/models/post.rb	/^  def failed_delete$/;"	f	class:Post
 failed_follow	app/models/relationship.rb	/^  def failed_follow$/;"	f	class:Relationship
+failed_save	app/models/comment.rb	/^  def failed_save$/;"	f	class:Comment
+failed_seccess	app/models/post.rb	/^  def failed_seccess$/;"	f	class:Post
 feed	app/controllers/api/v1/posts_controller.rb	/^  def feed$/;"	f	class:Api
-feed	app/models/user.rb	/^  def feed$/;"	f
 follow	app/controllers/api/v1/users_controller.rb	/^  def follow$/;"	f	class:Api
 followers	app/controllers/api/v1/users_controller.rb	/^  def followers$/;"	f	class:Api
 followers_info	app/models/user.rb	/^  def followers_info$/;"	f
 following	app/controllers/api/v1/users_controller.rb	/^  def following$/;"	f	class:Api
 following_info	app/models/user.rb	/^  def following_info$/;"	f
 full_detail	app/models/user.rb	/^  def full_detail$/;"	f
-index	app/controllers/api/v1/posts_controller.rb	/^  def index$/;"	f	class:Api
-operation_failed	app/models/user.rb	/^  def operation_failed$/;"	f
-operation_success	app/models/user.rb	/^  def operation_success$/;"	f
+not_found	app/models/user.rb	/^  def self.not_found$/;"	F
 post_detail	app/models/post.rb	/^  def post_detail$/;"	f	class:Post
+post_feeds	app/models/user.rb	/^  def post_feeds$/;"	f
 post_params	app/controllers/api/v1/posts_controller.rb	/^  def post_params$/;"	f	class:Api
 posts	app/controllers/api/v1/users_controller.rb	/^  def posts$/;"	f	class:Api
 profile	app/models/user.rb	/^  def profile$/;"	f
 render_json	app/controllers/application_controller.rb	/^  def render_json response, code$/;"	f	class:ApplicationController
+save_failed	app/models/user.rb	/^  def save_failed$/;"	f
+save_seccess	app/models/user.rb	/^  def save_seccess$/;"	f
+save_success	app/models/post.rb	/^  def save_success$/;"	f	class:Post
+session_failed	app/models/user.rb	/^  def self.session_failed$/;"	F
+session_seccess	app/models/user.rb	/^  def session_seccess$/;"	f
 show	app/controllers/api/v1/posts_controller.rb	/^  def show$/;"	f	class:Api
 show	app/controllers/api/v1/users_controller.rb	/^  def show$/;"	f	class:Api
+success_delete	app/models/post.rb	/^  def success_delete$/;"	f	class:Post
 success_follow	app/models/relationship.rb	/^  def success_follow$/;"	f	class:Relationship
+success_save	app/models/comment.rb	/^  def success_save$/;"	f	class:Comment
 system!	bin/setup	/^def system!(*args)$/;"	f
 system!	bin/update	/^def system!(*args)$/;"	f
 unfollow	app/controllers/api/v1/users_controller.rb	/^  def unfollow$/;"	f	class:Api
 up	db/migrate/20190618063633_add_attachment_avatar_to_users.rb	/^  def self.up$/;"	F	class:AddAttachmentAvatarToUsers
 update	app/controllers/api/v1/users_controller.rb	/^  def update$/;"	f	class:Api
-user_not_found	app/models/user.rb	/^  def self.user_not_found$/;"	F
+update_failed	app/models/user.rb	/^  def update_failed$/;"	f
+update_seccess	app/models/user.rb	/^  def update_seccess$/;"	f
 user_params	app/controllers/api/v1/users_controller.rb	/^  def user_params$/;"	f	class:Api
 user_posts	app/models/user.rb	/^  def user_posts$/;"	f	class:User
